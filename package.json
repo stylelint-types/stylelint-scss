@@ -3,7 +3,7 @@
   "type": "module",
   "version": "6.0.0",
   "packageManager": "pnpm@8.11.0",
-  "description": "Provide a defineConfig function for stylelint.config.js files",
+  "description": "TypeScript definitions for stylelint-define-config",
   "author": "pengzhanbo <volodymyr@foxmail.com> (https://github.com/pengzhanbo)",
   "license": "MIT",
   "homepage": "https://github.com/stylelint-types/stylelint-scss#readme",

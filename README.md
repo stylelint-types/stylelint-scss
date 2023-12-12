@@ -1,5 +1,7 @@
 # @stylelint-types/stylelint-scss
 
+TypeScript definitions for [stylelint-define-config](https://github.com/stylelint-types/stylelint-define-config).
+
 ## Install
 
 ```sh
@@ -24,3 +26,14 @@ module.exports = defineConfig({
   }
 })
 ```
+
+![](./static/demo.png)
+
+## Credits
+
+- [@stylelint-types](https://github.com/stylelint-types)
+- [@pengzhanbo](https://github.com/pengzhanbo)
+
+## LICENSE
+
+(MIT)[./LICENSE]
