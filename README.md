@@ -36,4 +36,4 @@ module.exports = defineConfig({
 
 ## LICENSE
 
-(MIT)[./LICENSE]
+[MIT](./LICENSE)
