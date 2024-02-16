@@ -63,6 +63,7 @@ import type { PercentPlaceholderPatternOptions } from './rules/percent-placehold
 import type { SelectorNoRedundantNestingSelectorOptions } from './rules/selector-no-redundant-nesting-selector'
 import type { SelectorNoUnionClassNameOptions } from './rules/selector-no-union-class-name'
 import type { SelectorNestCombinatorsOptions } from './rules/selector-nest-combinators'
+import type { NoUnusedPrivateMembersOptions } from './rules/no-unused-private-members'
 
 export interface Extends {
   'stylelint-config-standard-scss': void
@@ -616,6 +617,22 @@ interface RuleOptions {
    * @see [no-global-function-names](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/no-global-function-names)
    */
   'scss/no-global-function-names': NoGlobalFunctionNamesOptions
+
+  /**
+   * Disallow unused private members.
+   *
+   * [Private members](https://sass-lang.com/documentation/at-rules/use/#private-members),
+   * such as functions, mixins, variables, and selector placeholders are defined with names that
+   * start with either `-` or `_` (in the case of variables the name follows `$`, and the same
+   * applies to the `%` prefix for selector placeholders). These private members remain confined
+   * within the module, therefore, if they go unused within the module, they are considered unused.
+   *
+   * This rule ignores files using `@import` since all files loaded through it are consolidated
+   * within the same module. This setup makes it tricky to ensure all usages of private members.
+   *
+   * @see [no-unused-private-members](https://github.com/stylelint-scss/stylelint-scss/tree/master/src/rules/no-unused-private-members)
+   */
+  'scss/no-unused-private-members': NoUnusedPrivateMembersOptions
 
   /**
    * Disallow linebreaks after Sass operators.
