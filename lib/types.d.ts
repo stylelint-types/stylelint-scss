@@ -68,6 +68,7 @@ import type { AtImportPartialExtensionAllowedListOptions } from './rules/at-impo
 import type { AtImportPartialExtensionDisallowedListOptions } from './rules/at-import-partial-extension-disallowed-list'
 import type { AtMixinNoRiskyNestingSelectorOptions } from './rules/at-mixin-no-risky-nesting-selector'
 import type { LoadPartialExtensionOptions } from './rules/load-partial-extension'
+import type { DeclarationPropertyValueNoUnknownOptions } from './rules/declaration-property-value-no-unknown'
 
 export interface Extends {
   'stylelint-config-standard-scss': void
@@ -395,6 +396,27 @@ interface RuleOptions {
    * @see [declaration-nested-properties](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/declaration-nested-properties)
    */
   'scss/declaration-nested-properties': DeclarationNestedPropertiesOptions
+
+  /**
+   * Disallow unknown values for properties within declarations.
+   *
+   * This rule considers values for properties defined within the CSS specifications to be known. You can use the `propertiesSyntax` and `typesSyntax` secondary options to extend the syntax.
+   *
+   * This rule is only appropriate for CSS. You should not turn it on for CSS-like languages, such as Sass or Less, as they have their own syntaxes.
+   *
+   * This rule is experimental with some false negatives that we'll patch in minor releases.
+   *
+   * It sometimes overlaps with:
+   * - [`color-no-invalid-hex`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/color-no-invalid-hex/README.md)
+   * - [`function-no-unknown`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/function-no-unknown/README.md)
+   * - [`string-no-newline`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/string-no-newline/README.md)
+   * - [`unit-no-unknown`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/unit-no-unknown/README.md)
+   *
+   * If duplicate problems are flagged, you can turn off the corresponding rule.
+   *
+   * @see [declaration-property-value-no-unknown](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/declaration-property-value-no-unknown)
+   */
+  'scss/declaration-property-value-no-unknown': DeclarationPropertyValueNoUnknownOptions
 
   /**
    * Disallow `/*`-comments.
