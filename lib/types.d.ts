@@ -67,6 +67,7 @@ import type { NoUnusedPrivateMembersOptions } from './rules/no-unused-private-me
 import type { AtImportPartialExtensionAllowedListOptions } from './rules/at-import-partial-extension-allowed-list'
 import type { AtImportPartialExtensionDisallowedListOptions } from './rules/at-import-partial-extension-disallowed-list'
 import type { AtMixinNoRiskyNestingSelectorOptions } from './rules/at-mixin-no-risky-nesting-selector'
+import type { LoadPartialExtensionOptions } from './rules/load-partial-extension'
 
 export interface Extends {
   'stylelint-config-standard-scss': void
@@ -184,6 +185,8 @@ interface RuleOptions {
   'scss/at-if-no-null': AtIfNoNullOptions
 
   /**
+   * @deprecated Use `load-partial-extension` instead, and will be removed in '7.0'.
+   *
    * Require or disallow extension in `@import` commands.
    *
    * The rule ignores [cases](https://sass-lang.com/documentation/at-rules/import) when Sass considers an `@import` command just a plain CSS import:
@@ -620,6 +623,21 @@ interface RuleOptions {
    * @see [load-no-partial-leading-underscore](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/load-no-partial-leading-underscore)
    */
   'scss/load-no-partial-leading-underscore': LoadNoPartialLeadingUnderscoreOptions
+
+  /**
+   * Require or disallow extension in `@import`, `@use`, `@forward`, and `[meta.load-css]` commands.
+   *
+   * The [`fix` option](https://stylelint.io/user-guide/usage/options#fix) can automatically fix all of the problems reported by this rule only when `"never"` is given.
+   *
+   * The rule ignores [cases](https://sass-lang.com/documentation/at-rules/import) when Sass considers an `@import` command just a plain CSS import:
+   * - If the file’s extension is `.css`.
+   * - If the filename begins with `http://` (or any other protocol).
+   * - If the filename is a `url()`.
+   * - If the `@import` has any media queries.
+   *
+   * @see [load-partial-extension](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/load-partial-extension)
+   */
+  'scss/load-partial-extension': LoadPartialExtensionOptions
 
   /**
    * Require quoted keys in Sass maps.
