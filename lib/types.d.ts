@@ -66,6 +66,7 @@ import type { SelectorNestCombinatorsOptions } from './rules/selector-nest-combi
 import type { NoUnusedPrivateMembersOptions } from './rules/no-unused-private-members'
 import type { AtImportPartialExtensionAllowedListOptions } from './rules/at-import-partial-extension-allowed-list'
 import type { AtImportPartialExtensionDisallowedListOptions } from './rules/at-import-partial-extension-disallowed-list'
+import type { AtMixinNoRiskyNestingSelectorOptions } from './rules/at-mixin-no-risky-nesting-selector'
 
 export interface Extends {
   'stylelint-config-standard-scss': void
@@ -270,6 +271,22 @@ interface RuleOptions {
    * @see [at-mixin-named-arguments](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-mixin-named-arguments)
    */
   'scss/at-mixin-named-arguments': AtMixinNamedArgumentsOptions
+
+  /**
+   * Disallow risky nesting selectors within a mixin.
+   *
+   * If a mixin contains a parent selector within another style rule,
+   * and is used in a nested context, the output selector may include the outermost
+   * parent selector in an unexpected way.
+   *
+   * This only occurs when a parent selector meets all of the following conditions:
+   * - Is within a `@mixin` rule.
+   * - Is nested within another style rule.
+   * - Is not positioned at the beginning of a complex selector.
+   *
+   * @see [at-mixin-no-risky-nesting-selector](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-mixin-no-risky-nesting-selector)
+   */
+  'scss/at-mixin-no-risky-nesting-selector': AtMixinNoRiskyNestingSelectorOptions
 
   /**
    * Require or disallow parentheses in argumentless `@mixin` calls.
