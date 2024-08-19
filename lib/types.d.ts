@@ -64,6 +64,8 @@ import type { SelectorNoRedundantNestingSelectorOptions } from './rules/selector
 import type { SelectorNoUnionClassNameOptions } from './rules/selector-no-union-class-name'
 import type { SelectorNestCombinatorsOptions } from './rules/selector-nest-combinators'
 import type { NoUnusedPrivateMembersOptions } from './rules/no-unused-private-members'
+import type { AtImportPartialExtensionAllowedListOptions } from './rules/at-import-partial-extension-allowed-list'
+import type { AtImportPartialExtensionDisallowedListOptions } from './rules/at-import-partial-extension-disallowed-list'
 
 export interface Extends {
   'stylelint-config-standard-scss': void
@@ -207,6 +209,8 @@ interface RuleOptions {
   'scss/at-import-no-partial-leading-underscore': AtImportNoPartialLeadingUnderscoreOptions
 
   /**
+   * @deprecated Use `at-import-partial-extension-disallowed-list` instead, and will be removed in '7.0'.
+   *
    * Specify a blacklist of disallowed file extensions for partial names in `@import` commands.
    *
    * The rule ignores [cases](https://sass-lang.com/documentation/at-rules/import) when Sass considers an `@import` command just a plain CSS import:
@@ -220,6 +224,8 @@ interface RuleOptions {
   'scss/at-import-partial-extension-blacklist': AtImportPartialExtensionBlacklistOptions
 
   /**
+   * @deprecated Use `at-import-partial-extension-allowed-list` instead, and will be removed in '7.0'.
+   *
    * Specify a whitelist of allowed file extensions for partial names in `@import` commands.
    *
    * The rule ignores [cases](https://sass-lang.com/documentation/at-rules/import) when Sass considers an `@import` command just a plain CSS import:
@@ -231,6 +237,32 @@ interface RuleOptions {
    * @see [at-import-partial-extension-whitelist](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-import-partial-extension-whitelist)
    */
   'scss/at-import-partial-extension-whitelist': AtImportPartialExtensionWhitelistOptions
+
+  /**
+   * Specify a whitelist of allowed file extensions for partial names in `@import` commands.
+   *
+   * The rule ignores [cases](https://sass-lang.com/documentation/at-rules/import) when Sass considers an `@import` command just a plain CSS import:
+   * - If the file’s extension is `.css`.
+   * - If the filename begins with `http://` (or any other protocol).
+   * - If the filename is a `url()`.
+   * - If the `@import` has any media queries.
+   *
+   * @see [at-import-partial-extension-allowed-list](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-import-partial-extension-allowed-list)
+   */
+  'scss/at-import-partial-extension-allowed-list': AtImportPartialExtensionAllowedListOptions
+
+  /**
+   * Specify a blacklist of disallowed file extensions for partial names in `@import` commands.
+   *
+   * The rule ignores [cases](https://sass-lang.com/documentation/at-rules/import) when Sass considers an `@import` command just a plain CSS import:
+   * - If the file’s extension is `.css`.
+   * - If the filename begins with `http://` (or any other protocol).
+   * - If the filename is a `url()`.
+   * - If the `@import` has any media queries.
+   *
+   * @see [at-import-partial-extension-disallowed-list](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-import-partial-extension-disallowed-list)
+   */
+  'scss/at-import-partial-extension-disallowed-list': AtImportPartialExtensionDisallowedListOptions
 
   /**
    * Require named parameters in at-mixin call rule.
