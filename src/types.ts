@@ -84,7 +84,7 @@ export interface Syntax {
   'postcss-scss': void
 }
 
-interface RuleOptions {
+export interface RuleOptions {
 
   /**
    * This is a rule that checks for situations where users have:

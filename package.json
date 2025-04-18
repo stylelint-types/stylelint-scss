@@ -2,7 +2,7 @@
   "name": "@stylelint-types/stylelint-scss",
   "type": "module",
   "version": "6.5.0",
-  "packageManager": "pnpm@9.7.1",
+  "packageManager": "pnpm@10.8.1",
   "description": "TypeScript definitions for stylelint-define-config",
   "author": "pengzhanbo <volodymyr@foxmail.com> (https://github.com/pengzhanbo)",
   "license": "MIT",
@@ -30,20 +30,21 @@
     },
     "./types": {
       "types": "./lib/types.d.ts"
-    },
-    "./package.json": "./package.json"
+    }
   },
-  "main": "lib/index.d.ts",
+  "main": "lib/index.js",
   "files": [
     "lib"
   ],
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=9.0.0",
-    "pnpm": ">=8.6.0"
+    "pnpm": ">=8.0.0"
   },
   "scripts": {
     "lint": "eslint .",
+    "build": "tsup",
+    "prepublish": "pnpm lint && pnpm build",
     "release:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "release": "bumpp package.json --execute=\"pnpm release:changelog\" --commit --all --push --tag && pnpm publish --access public"
   },
@@ -57,13 +58,14 @@
     }
   },
   "devDependencies": {
-    "@pengzhanbo/eslint-config": "^1.12.0",
-    "bumpp": "^9.5.1",
+    "@pengzhanbo/eslint-config": "^1.29.0",
+    "bumpp": "^10.1.0",
     "conventional-changelog-cli": "^5.0.0",
-    "eslint": "^9.9.0",
-    "stylelint": "^16.8.2",
-    "stylelint-define-config": "^1.6.0",
-    "stylelint-scss": "^6.5.0",
-    "typescript": "^5.5.4"
+    "eslint": "^9.24.0",
+    "stylelint": "^16.18.0",
+    "stylelint-define-config": "^16.18.0",
+    "stylelint-scss": "^6.11.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
   }
 }
