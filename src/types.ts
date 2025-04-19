@@ -98,6 +98,10 @@ export interface RuleOptions {
   /**
    * Require or disallow a newline after the closing brace of `@else` statements.
    *
+   * This rule might have conflicts with Stylelint's core rule [`block-closing-brace-newline-after`](https://stylelint.io/user-guide/rules/block-closing-brace-newline-after) if it doesn't have `"ignoreAtRules": ["else"]` in a `.stylelintrc` config file.  That's because an `@else { ... }` statement can be successfully parsed as an at-rule with a block. You might also want to set `"ignoreAtRules": ["else"]` for another Stylelint's core rule - [`at-rule-empty-line-before`](https://stylelint.io/user-guide/rules/at-rule-empty-line-before) that could be forcing empty lines before at-rules (including `@else`s that follow `@if`s or other `@else`s).
+   *
+   * This rule doesn't have usual `"always"` and `"never"` main option values, because if you don't need special behavior for `@if` and `@else` you could just use [`block-closing-brace-newline-after`](https://stylelint.io/user-guide/rules/block-closing-brace-newline-after) set to `"always"` or any other value.
+   *
    * @see [at-else-closing-brace-newline-after](https://github.com/stylelint-scss/stylelint-scss/tree/master/src/rules/at-else-closing-brace-space-after)
    */
   'scss/at-else-closing-brace-newline-after': AtElseClosingBraceNewlineAfterOptions
@@ -105,12 +109,16 @@ export interface RuleOptions {
   /**
    * Require a single space or disallow whitespace after the closing brace of `@else` statements.
    *
+   * This rule might have conflicts with Stylelint's core [`block-closing-brace-space-after`](https://stylelint.io/user-guide/rules/block-closing-brace-space-after) rule if the latter is set up in your `.stylelintrc` config file.
+   *
    * @see [at-else-closing-brace-space-after](https://github.com/stylelint-scss/stylelint-scss/tree/master/src/rules/at-else-closing-brace-space-after)
    */
   'scss/at-else-closing-brace-space-after': AtElseClosingBraceNewlineAfterOptions
 
   /**
    * Require an empty line or disallow empty lines before `@`-else.
+   *
+   * `@if` and `@else` statements might need to have different behavior than all the other at-rules. For that you might need to set `"ignoreAtRules": ["else"]` for Stylelint's core rule [`at-rule-empty-line-before`](https://stylelint.io/user-guide/rules/at-rule-empty-line-before). But that would make you unable to disallow empty lines before `@else` while forcing it to be on a new line. This rule is designed to solve exactly that.
    *
    * @see [at-else-empty-line-before](https://github.com/stylelint-scss/stylelint-scss/tree/master/src/rules/at-else-empty-line-before)
    */
@@ -270,6 +278,13 @@ export interface RuleOptions {
   'scss/at-import-partial-extension-disallowed-list': AtImportPartialExtensionDisallowedListOptions
 
   /**
+   * Require or disallow parentheses in argumentless `@mixin` calls.
+   *
+   * @see [at-mixin-argumentless-call-parentheses](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-mixin-argumentless-call-parentheses)
+   */
+  'scss/at-mixin-argumentless-call-parentheses': AtMixinArgumentlessCallParenthesesOptions
+
+  /**
    * Require named parameters in at-mixin call rule.
    *
    * @see [at-mixin-named-arguments](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-mixin-named-arguments)
@@ -291,13 +306,6 @@ export interface RuleOptions {
    * @see [at-mixin-no-risky-nesting-selector](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-mixin-no-risky-nesting-selector)
    */
   'scss/at-mixin-no-risky-nesting-selector': AtMixinNoRiskyNestingSelectorOptions
-
-  /**
-   * Require or disallow parentheses in argumentless `@mixin` calls.
-   *
-   * @see [at-mixin-argumentless-call-parentheses](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-mixin-argumentless-call-parentheses)
-   */
-  'scss/at-mixin-argumentless-call-parentheses': AtMixinArgumentlessCallParenthesesOptions
 
   /**
    * Require or disallow a space before `@mixin` parentheses.
@@ -399,6 +407,12 @@ export interface RuleOptions {
 
   /**
    * Disallow unknown values for properties within declarations.
+   *
+   * ```scss
+   * a { top: unknown; }
+   * //  ^^^  ^^^^^^^
+   * // property and value pairs like these
+   * ```
    *
    * This rule considers values for properties defined within the CSS specifications to be known. You can use the `propertiesSyntax` and `typesSyntax` secondary options to extend the syntax.
    *
@@ -603,6 +617,12 @@ export interface RuleOptions {
 
   /**
    * Disallow unknown functions. Should be used **instead of** Stylelint's [function-no-unknown](https://stylelint.io/user-guide/rules/function-no-unknown).
+   *
+   * ```scss
+   * a { color: unknown(1); }
+   * //         ^^^^^^^
+   * //         Functions like this
+   * ```
    *
    * This rule is basically a wrapper around the mentioned core rule. You must disable Stylelint's core rule to make this rule work:
    * ```json
