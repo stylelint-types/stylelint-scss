@@ -46,6 +46,7 @@ import type { DoubleSlashCommentEmptyLineBeforeOptions } from './rules/double-sl
 import type { DoubleSlashCommentInlineOptions } from './rules/double-slash-comment-inline'
 import type { DoubleSlashCommentWhitespaceInsideOptions } from './rules/double-slash-comment-whitespace-inside'
 import type { FunctionCalculationNoInterpolationOptions } from './rules/function-calculation-no-interpolation'
+import type { FunctionColorChannelOptions } from './rules/function-color-channel'
 import type { FunctionColorRelativeOptions } from './rules/function-color-relative'
 import type { FunctionDisallowedListOptions } from './rules/function-disallowed-list'
 import type { FunctionNoUnknownOptions } from './rules/function-no-unknown'
@@ -592,6 +593,30 @@ export interface RuleOptions {
    */
   'scss/function-calculation-no-interpolation': FunctionCalculationNoInterpolationOptions
 
+  /**
+   * Encourage the use of the [color.channel](https://sass-lang.com/documentation/modules/color#channel) function over related deprecated color functions:
+   *
+   * - [color.alpha](https://sass-lang.com/documentation/modules/color#alpha) / [alpha](https://sass-lang.com/documentation/modules/color#alpha) / [opacity](https://sass-lang.com/documentation/modules/color#opacity)
+   * - [color.blackness](https://sass-lang.com/documentation/modules/color#blackness) / [blackness](https://sass-lang.com/documentation/modules/color#blackness)
+   * - [color.blue](https://sass-lang.com/documentation/modules/color#blue) / [blue](https://sass-lang.com/documentation/modules/color#blue)
+   * - [color.green](https://sass-lang.com/documentation/modules/color#green) / [green](https://sass-lang.com/documentation/modules/color#green)
+   * - [color.hue](https://sass-lang.com/documentation/modules/color#hue) / [hue](https://sass-lang.com/documentation/modules/color#hue)
+   * - [color.lightness](https://sass-lang.com/documentation/modules/color#lightness) / [lightness](https://sass-lang.com/documentation/modules/color#lightness)
+   * - [color.red](https://sass-lang.com/documentation/modules/color#red) / [red](https://sass-lang.com/documentation/modules/color#red)
+   * - [color.saturation](https://sass-lang.com/documentation/modules/color#saturation) / [saturation](https://sass-lang.com/documentation/modules/color#saturation)
+   * - [color.whiteness](https://sass-lang.com/documentation/modules/color#whiteness)
+   *
+   * ```scss
+   * p {
+   *   opacity: opacity(rgb(210, 225, 221, 0.4));
+   * //         ^^^^^^^
+   * //         This function should be color.channel
+   * }
+   * ```
+   *
+   * @see [function-color-channel](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/function-color-channel)
+   */
+  'scss/function-color-channel': FunctionColorChannelOptions
   /**
    * Encourage the use of the [scale-color](https://sass-lang.com/documentation/modules/color#scale-color) over:
    *
