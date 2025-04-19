@@ -58,6 +58,7 @@ import type { MapKeysQuotesOptions } from './rules/map-keys-quotes'
 import type { MediaFeatureValueDollarVariableOptions } from './rules/media-feature-value-dollar-variable'
 import type { NoDollarVariablesOptions } from './rules/no-dollar-variables'
 import type { NoDuplicateDollarVariablesOptions } from './rules/no-duplicate-dollar-variables'
+import type { NoDuplicateLoadRulesOptions } from './rules/no-duplicate-load-rules'
 import type { NoDuplicateMixinsOptions } from './rules/no-duplicate-mixins'
 import type { NoGlobalFunctionNamesOptions } from './rules/no-global-function-names'
 import type { NoUnusedPrivateMembersOptions } from './rules/no-unused-private-members'
@@ -733,6 +734,13 @@ export interface RuleOptions {
    * @see [no-duplicate-dollar-variables](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/no-duplicate-dollar-variables)
    */
   'scss/no-duplicate-dollar-variables': NoDuplicateDollarVariablesOptions
+
+  /**
+   * Disallow duplicate `@import`, `@use` and `@forward` rules.
+   *
+   * @see [no-duplicate-load-rules](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/no-duplicate-load-rules)
+   */
+  'scss/no-duplicate-load-rules': NoDuplicateLoadRulesOptions
 
   /**
    * Disallow duplicate mixins within a stylesheet.
