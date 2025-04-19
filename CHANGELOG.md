@@ -1,3 +1,14 @@
+# [6.11.0](https://github.com/stylelint-types/stylelint-scss/compare/v6.5.0...v6.11.0) (2025-04-19)
+
+
+### Features
+
+* add `function-color-channel` rule ([1cca360](https://github.com/stylelint-types/stylelint-scss/commit/1cca36006c5812cc0f6d5093ba09bf17436f0551))
+* add `no-duplicate-load-rules` rule ([6a2ee67](https://github.com/stylelint-types/stylelint-scss/commit/6a2ee67de4f6498f583b87eff27c572c509cb674))
+* improve rules descriptions ([1e90ad3](https://github.com/stylelint-types/stylelint-scss/commit/1e90ad3e491dbfd8a9ad7871defa82248ce1a08a))
+
+
+
 # [6.5.0](https://github.com/stylelint-types/stylelint-scss/compare/v6.1.0...v6.5.0) (2024-08-19)
 
 
