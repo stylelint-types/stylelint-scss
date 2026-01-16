@@ -45,9 +45,9 @@
   "scripts": {
     "lint": "eslint .",
     "build": "tsup",
-    "prepublish": "pnpm lint && pnpm build",
+    "release:publish": "pnpm publish",
     "release:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release": "bumpp package.json --execute=\"pnpm release:changelog\" --commit --all --push --tag && pnpm publish --access public"
+    "release": "bumpp package.json --execute=\"pnpm release:changelog\" --commit --all --push --tag"
   },
   "peerDependencies": {
     "stylelint": ">=17",
