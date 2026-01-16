@@ -9,12 +9,8 @@ import type { AtFunctionPatternOptions } from './rules/at-function-pattern'
 import type { AtIfClosingBraceNewlineAfterOptions } from './rules/at-if-closing-brace-newline-after'
 import type { AtIfClosingBraceSpaceAfterOptions } from './rules/at-if-closing-brace-space-after'
 import type { AtIfNoNullOptions } from './rules/at-if-no-null'
-import type { AtImportNoPartialLeadingUnderscoreOptions } from './rules/at-import-no-partial-leading-underscore'
-import type { AtImportPartialExtensionOptions } from './rules/at-import-partial-extension'
 import type { AtImportPartialExtensionAllowedListOptions } from './rules/at-import-partial-extension-allowed-list'
-import type { AtImportPartialExtensionBlacklistOptions } from './rules/at-import-partial-extension-blacklist'
 import type { AtImportPartialExtensionDisallowedListOptions } from './rules/at-import-partial-extension-disallowed-list'
-import type { AtImportPartialExtensionWhitelistOptions } from './rules/at-import-partial-extension-whitelist'
 import type { AtMixinArgumentlessCallParenthesesOptions } from './rules/at-mixin-argumentless-call-parentheses'
 import type { AtMixinNamedArgumentsOptions } from './rules/at-mixin-named-arguments'
 import type { AtMixinNoRiskyNestingSelectorOptions } from './rules/at-mixin-no-risky-nesting-selector'
@@ -68,6 +64,7 @@ import type { OperatorNoUnspacedOptions } from './rules/operator-no-unspaced'
 import type { PartialNoImportOptions } from './rules/partial-no-import'
 import type { PercentPlaceholderPatternOptions } from './rules/percent-placeholder-pattern'
 import type { PropertyNoUnknownOptions } from './rules/property-no-unknown'
+import type { SelectorClassPatternOptions } from './rules/selector-class-pattern'
 import type { SelectorNestCombinatorsOptions } from './rules/selector-nest-combinators'
 import type { SelectorNoRedundantNestingSelectorOptions } from './rules/selector-no-redundant-nesting-selector'
 import type { SelectorNoUnionClassNameOptions } from './rules/selector-no-union-class-name'
@@ -194,64 +191,6 @@ export interface RuleOptions {
    * @see [at-if-no-null](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-if-no-null)
    */
   'scss/at-if-no-null': AtIfNoNullOptions
-
-  /**
-   * @deprecated Use `load-partial-extension` instead, and will be removed in '7.0'.
-   *
-   * Require or disallow extension in `@import` commands.
-   *
-   * The rule ignores [cases](https://sass-lang.com/documentation/at-rules/import) when Sass considers an `@import` command just a plain CSS import:
-   * - If the file’s extension is `.css`.
-   * - If the filename begins with `http://` (or any other protocol).
-   * - If the filename is a `url()`.
-   * - If the `@import` has any media queries.
-   *
-   * @see [at-import-partial-extension](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-import-partial-extension)
-   */
-  'scss/at-import-partial-extension': AtImportPartialExtensionOptions
-
-  /**
-   * Disallow leading underscore in partial names in `@import`.
-   *
-   * The rule ignores [cases](https://sass-lang.com/documentation/at-rules/import) when Sass considers an `@import` command just a plain CSS import:
-   * - If the file’s extension is `.css`.
-   * - If the filename begins with `http://` (or any other protocol).
-   * - If the filename is a `url()`.
-   * - If the `@import` has any media queries.
-   *
-   * @see [at-import-no-partial-leading-underscore](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-import-no-partial-leading-underscore)
-   */
-  'scss/at-import-no-partial-leading-underscore': AtImportNoPartialLeadingUnderscoreOptions
-
-  /**
-   * @deprecated Use `at-import-partial-extension-disallowed-list` instead, and will be removed in '7.0'.
-   *
-   * Specify a blacklist of disallowed file extensions for partial names in `@import` commands.
-   *
-   * The rule ignores [cases](https://sass-lang.com/documentation/at-rules/import) when Sass considers an `@import` command just a plain CSS import:
-   * - If the file’s extension is `.css`.
-   * - If the filename begins with `http://` (or any other protocol).
-   * - If the filename is a `url()`.
-   * - If the `@import` has any media queries.
-   *
-   * @see [at-import-partial-extension-blacklist](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-import-partial-extension-blacklist)
-   */
-  'scss/at-import-partial-extension-blacklist': AtImportPartialExtensionBlacklistOptions
-
-  /**
-   * @deprecated Use `at-import-partial-extension-allowed-list` instead, and will be removed in '7.0'.
-   *
-   * Specify a whitelist of allowed file extensions for partial names in `@import` commands.
-   *
-   * The rule ignores [cases](https://sass-lang.com/documentation/at-rules/import) when Sass considers an `@import` command just a plain CSS import:
-   * - If the file’s extension is `.css`.
-   * - If the filename begins with `http://` (or any other protocol).
-   * - If the filename is a `url()`.
-   * - If the `@import` has any media queries.
-   *
-   * @see [at-import-partial-extension-whitelist](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/at-import-partial-extension-whitelist)
-   */
-  'scss/at-import-partial-extension-whitelist': AtImportPartialExtensionWhitelistOptions
 
   /**
    * Specify a whitelist of allowed file extensions for partial names in `@import` commands.
@@ -523,10 +462,14 @@ export interface RuleOptions {
   'scss/dollar-variable-empty-line-before': DollarVariableEmptyLineBeforeOptions
 
   /**
-   * Disallow Sass variables that are used without interpolation with CSS features that use custom identifiers.
+   * This rule flags four situations in which Sass variables require interpolation:
    *
-   * Sass variables that contain a custom identifier as a string always require interpolation when used.
-   * Some CSS [at-rules](https://css-tricks.com/the-at-rules-of-css/) require variable interpolation even when the custom identifier value is not a string.
+   * - String-valued variables with custom identifier properties,
+   * - Variables in custom identifier at-rules,
+   * - Variables in `@supports` conditions, and
+   * - Variables in CSS custom properties.
+   *
+   * **Note**: For scenarios 1 and 3 regarding string-valued variables, this rule can only check variables that are defined in the same file where they are used, since it needs to determine if the variable's value is a string. Scenarios 2 and 4 check all variables regardless of where they are defined.
    *
    * @see [dollar-variable-no-missing-interpolation](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/dollar-variable-no-missing-interpolation)
    */
@@ -853,6 +796,12 @@ export interface RuleOptions {
    */
   'scss/percent-placeholder-pattern': PercentPlaceholderPatternOptions
 
+  /**
+   * Specify a pattern for class selectors.
+   *
+   * @see [selector-class-pattern](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/selector-class-pattern/)
+   */
+  'scss/selector-class-pattern': SelectorClassPatternOptions
   /**
    * Require or disallow nesting of combinators in selectors
    *

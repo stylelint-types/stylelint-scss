@@ -1,5 +1,6 @@
-import type { RuleConfig } from 'stylelint-define-config'
+import type { RegExpLike, RuleConfig } from 'stylelint-define-config'
 
 export type PercentPlaceholderPatternOptions = RuleConfig<
-  string | RegExp
+  RegExpLike,
+  [placeholderName: string, pattern: RegExpLike]
 >

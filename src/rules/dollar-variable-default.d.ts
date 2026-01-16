@@ -1,8 +1,9 @@
-import type { RuleConfig } from 'stylelint-define-config'
+import type { LiteralUnion, RuleConfig } from 'stylelint-define-config'
 
 export type DollarVariableDefaultOptions = RuleConfig<
   true,
+  [],
   {
-    ignore?: ('local')[]
+    ignore?: LiteralUnion<'local'>[]
   }
 >

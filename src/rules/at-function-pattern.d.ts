@@ -1,3 +1,6 @@
-import type { RuleConfig } from 'stylelint-define-config'
+import type { RegExpLike, RuleConfig } from 'stylelint-define-config'
 
-export type AtFunctionPatternOptions = RuleConfig<string | RegExp>
+export type AtFunctionPatternOptions = RuleConfig<
+  RegExpLike,
+  [functionName: string, pattern: RegExpLike]
+>

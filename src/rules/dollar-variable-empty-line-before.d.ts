@@ -1,16 +1,10 @@
-import type { RuleConfig } from 'stylelint-define-config'
-
-export type DollarVariableEmptyLineBeforeExcept = 'first-nested' | 'after-comment' | 'after-dollar-variable'
-
-export type DollarVariableEmptyLineBeforeIgnore = 'after-comment' | 'inside-single-line-block' | 'after-dollar-variable'
-
-export interface DollarVariableEmptyLineBeforeSecondaryOptions {
-  except?: DollarVariableEmptyLineBeforeExcept[]
-  ignore?: DollarVariableEmptyLineBeforeIgnore[]
-  disableFix?: boolean
-}
+import type { LiteralUnion, RuleConfig } from 'stylelint-define-config'
 
 export type DollarVariableEmptyLineBeforeOptions = RuleConfig<
   'always' | 'never',
-  DollarVariableEmptyLineBeforeSecondaryOptions
+  [],
+  {
+    except?: LiteralUnion<'first-nested' | 'after-comment' | 'after-dollar-variable'>[]
+    ignore?: LiteralUnion<'after-comment' | 'inside-single-line-block' | 'after-dollar-variable'>[]
+  }
 >

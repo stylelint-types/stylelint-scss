@@ -1,8 +1,9 @@
-import type { RuleConfig } from 'stylelint-define-config'
+import type { LiteralUnion, RuleConfig } from 'stylelint-define-config'
 
 export type NoDuplicateDollarVariablesOptions = RuleConfig<
   true,
+  [],
   {
-    ignoreInside?: ('at-rule' | 'nested-at-rule')[]
+    ignoreInside?: LiteralUnion<'at-rule' | 'nested-at-rule'>[]
   }
 >

@@ -2,7 +2,7 @@
   "name": "@stylelint-types/stylelint-scss",
   "type": "module",
   "version": "6.11.0",
-  "packageManager": "pnpm@10.8.1",
+  "packageManager": "pnpm@10.28.0",
   "description": "TypeScript definitions for stylelint-define-config",
   "author": "pengzhanbo <volodymyr@foxmail.com> (https://github.com/pengzhanbo)",
   "license": "MIT",
@@ -26,7 +26,8 @@
   ],
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts"
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js"
     },
     "./types": {
       "types": "./lib/types.d.ts"
@@ -37,9 +38,9 @@
     "lib"
   ],
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=20.19.0",
     "npm": ">=9.0.0",
-    "pnpm": ">=8.0.0"
+    "pnpm": ">=9.0.0"
   },
   "scripts": {
     "lint": "eslint .",
@@ -49,8 +50,8 @@
     "release": "bumpp package.json --execute=\"pnpm release:changelog\" --commit --all --push --tag && pnpm publish --access public"
   },
   "peerDependencies": {
-    "stylelint": ">=16.0.0",
-    "stylelint-define-config": ">=1.0.0"
+    "stylelint": ">=17",
+    "stylelint-define-config": ">=17"
   },
   "peerDependenciesMeta": {
     "stylelint": {
@@ -58,14 +59,18 @@
     }
   },
   "devDependencies": {
-    "@pengzhanbo/eslint-config": "^1.29.0",
-    "bumpp": "^10.1.0",
+    "@pengzhanbo/eslint-config": "^1.45.0",
+    "bumpp": "^10.4.0",
     "conventional-changelog-cli": "^5.0.0",
-    "eslint": "^9.24.0",
-    "stylelint": "^16.18.0",
-    "stylelint-define-config": "^16.18.0",
-    "stylelint-scss": "^6.11.1",
-    "tsup": "^8.4.0",
-    "typescript": "^5.8.3"
+    "eslint": "^9.39.2",
+    "stylelint": "^17.0.0",
+    "stylelint-define-config": "^17.0.0",
+    "stylelint-scss": "^7.0.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

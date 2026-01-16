@@ -1,9 +1,10 @@
-import type { RuleConfig } from 'stylelint-define-config'
+import type { LiteralUnion, RuleConfig } from 'stylelint-define-config'
 
 export type AtFunctionNamedArgumentsOptions = RuleConfig<
   'always' | 'never',
+  [],
   {
-    ignore?: ('single-argument')[]
+    ignore?: LiteralUnion<'single-argument'>[]
     /**
      * ["/regex/", "string"]
      */

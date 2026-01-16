@@ -1,8 +1,9 @@
-import type { RuleConfig } from 'stylelint-define-config'
+import type { LiteralUnion, RegExpLike, RuleConfig } from 'stylelint-define-config'
 
 export type DollarVariablePatternOptions = RuleConfig<
-  string | RegExp,
+  RegExpLike,
+  [variableName: string, pattern: RegExpLike],
   {
-    ignore?: 'local' | 'global'
+    ignore?: LiteralUnion<'local' | 'global'>
   }
 >

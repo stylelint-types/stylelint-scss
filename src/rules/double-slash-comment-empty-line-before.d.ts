@@ -1,9 +1,10 @@
-import type { RuleConfig } from 'stylelint-define-config'
+import type { LiteralUnion, RuleConfig } from 'stylelint-define-config'
 
 export type DoubleSlashCommentEmptyLineBeforeOptions = RuleConfig<
   'always' | 'never',
+  [],
   {
-    except?: ('first-nested' | 'inside-block')[]
-    ignore?: ('between-comments' | 'stylelint-commands' | 'inside-block')[]
+    except?: LiteralUnion<'first-nested' | 'inside-block'>[]
+    ignore?: LiteralUnion<'between-comments' | 'stylelint-commands' | 'inside-block'>[]
   }
 >

@@ -2,16 +2,17 @@ import type { AtRules, RegExpLike, RuleConfig } from 'stylelint-define-config'
 
 export type PropertyNoUnknownOptions = RuleConfig<
   true,
+  [],
   {
-    ignoreProperties?: (string | RegExp)[]
+    ignoreProperties?: RegExpLike[]
     /**
      * Skips checking properties of the given selectors against this rule.
      */
-    ignoreSelectors?: (string | RegExp)[]
+    ignoreSelectors?: RegExpLike[]
     /**
      * Ignores properties nested within specified at-rules.
      */
-    ignoreAtRules?: (AtRules | RegExpLike)[]
+    ignoreAtRules?: (AtRules | RegExp)[]
     /**
      * If `true`, this rule will check vendor-prefixed properties.
      * @default false

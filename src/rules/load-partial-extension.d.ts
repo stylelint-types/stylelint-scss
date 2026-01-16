@@ -1,5 +1,5 @@
-import type { LiteralUnion, RuleConfig } from 'stylelint-define-config'
+import type { RuleConfig } from 'stylelint-define-config'
 
 export type LoadPartialExtensionOptions = RuleConfig<
-  LiteralUnion<'always' | 'never'>
+  'always' | 'never'
 >

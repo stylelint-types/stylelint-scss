@@ -1,7 +1,8 @@
-import type { CSSPropertiesMap, RuleConfig } from 'stylelint-define-config'
+import type { Arrayable, CSSPropertiesMap, RegExpLike, RuleConfig } from 'stylelint-define-config'
 
 export type DeclarationPropertyValueNoUnknownOptions = RuleConfig<
   true,
+  [],
   {
     /**
      * Ignore the specified property and value pairs.
@@ -11,7 +12,7 @@ export type DeclarationPropertyValueNoUnknownOptions = RuleConfig<
      *
      * For example, `"/.+/"` matches any strings.
      */
-    ignoreProperties?: Record<CSSPropertiesMap, (string | RegExp)[] | string | RegExp>
+    ignoreProperties?: Record<CSSPropertiesMap, Arrayable<RegExpLike>>
     /**
      * Extend or alter the properties syntax dictionary.
      * [CSS Value Definition Syntax](https://github.com/csstree/csstree/blob/master/docs/definition-syntax.md) is used to define a value's syntax.
