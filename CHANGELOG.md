@@ -1,3 +1,12 @@
+# [7.0.0](https://github.com/stylelint-types/stylelint-scss/compare/v6.11.0...v7.0.0) (2026-01-16)
+
+
+### Features
+
+* support stylelint v17 ([22a0747](https://github.com/stylelint-types/stylelint-scss/commit/22a074779e0da7857ff8c22eb7e1b51cfe9aa4dc))
+
+
+
 # [6.11.0](https://github.com/stylelint-types/stylelint-scss/compare/v6.5.0...v6.11.0) (2025-04-19)
 
 
