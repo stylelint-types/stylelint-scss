@@ -341,6 +341,15 @@ export interface RuleOptions {
 
   /**
    * Require or disallow properties with `-` in their names to be in a form of a nested group.
+   * 
+   * ```scss
+   * //This is properties nesting:
+   * font: {
+   *   size: 16px;
+   *   weight: 700;
+   * }
+   * ```
+   * [Sass official docs on nested properties](https://sass-lang.com/documentation/style-rules/declarations#nesting).
    *
    * @see [declaration-nested-properties](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/declaration-nested-properties)
    */
