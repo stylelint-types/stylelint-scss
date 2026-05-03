@@ -1,3 +1,12 @@
+## [7.0.1](https://github.com/stylelint-types/stylelint-scss/compare/v7.0.0...v7.0.1) (2026-05-03)
+
+
+### Bug Fixes
+
+* incorrect type for `scss/declaration-nested-properties`, close [#1](https://github.com/stylelint-types/stylelint-scss/issues/1) ([#2](https://github.com/stylelint-types/stylelint-scss/issues/2)) ([8117682](https://github.com/stylelint-types/stylelint-scss/commit/8117682857f5306da196f249a11e06bfaefa13b9))
+
+
+
 # [7.0.0](https://github.com/stylelint-types/stylelint-scss/compare/v6.11.0...v7.0.0) (2026-01-16)
 
 
