@@ -1,4 +1,4 @@
-import type { RuleConfig, LiteralUnion } from 'stylelint-define-config'
+import type { LiteralUnion, RuleConfig } from 'stylelint-define-config'
 
 export type DeclarationNestedPropertiesOptions = RuleConfig<
   'always' | 'never',
