@@ -6,13 +6,12 @@
     "strict": true,
     "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,
+    "declaration": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "isolatedDeclarations": true
   },
-  "exclude": [
-    "lib",
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src", "tsdown.config.ts", "oxlint.config.ts", "oxfmt.config.ts"],
+  "exclude": ["lib", "node_modules"]
 }
