@@ -1,4 +1,4 @@
-import type { Extends, Plugins, RuleOptions, Syntax } from './types'
+import type { Extends, Plugins, RuleOptions, Syntax } from './types.js'
 
 declare module 'stylelint-define-config' {
   export interface CustomPlugins extends Plugins {}
