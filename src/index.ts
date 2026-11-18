@@ -6,3 +6,5 @@ declare module 'stylelint-define-config' {
   export interface CustomSyntax extends Syntax {}
   export interface CustomRuleOptions extends RuleOptions {}
 }
+
+export type * from './types.js'

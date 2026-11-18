@@ -1,3 +1,9 @@
+# [7.5.0](https://github.com/stylelint-types/stylelint-scss/compare/v7.0.1...v7.5.0) (2026-11-18)
+
+### Features
+
+- improve message type ([7c8a996](https://github.com/stylelint-types/stylelint-scss/commit/7c8a9967a2f324012ab8bbe550af121746d15c19))
+
 ## [7.0.1](https://github.com/stylelint-types/stylelint-scss/compare/v7.0.0...v7.0.1) (2026-05-03)
 
 ### Bug Fixes
