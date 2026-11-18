@@ -1,3 +1,3 @@
 import type { RuleConfig } from 'stylelint-define-config'
 
-export type DeclarationNestedPropertiesNoDividedGroupsOptions = RuleConfig<true>
+export type DeclarationNestedPropertiesNoDividedGroupsOptions = RuleConfig<true, [prop: string]>

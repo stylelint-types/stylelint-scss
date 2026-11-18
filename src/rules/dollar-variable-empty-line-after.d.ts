@@ -6,5 +6,9 @@ export type DollarVariableEmptyLineAfterOptions = RuleConfig<
   {
     except?: LiteralUnion<'last-nested' | 'before-comment' | 'before-dollar-variable'>[]
     ignore?: LiteralUnion<'before-comment' | 'inside-single-line-block'>[]
+    /**
+     * Disable the fix for this rule.
+     */
+    disableFix?: boolean
   }
 >

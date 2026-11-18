@@ -1,3 +1,3 @@
 import type { RuleConfig } from 'stylelint-define-config'
 
-export type OperatorNoUnspacedOptions = RuleConfig<true>
+export type OperatorNoUnspacedOptions = RuleConfig<true, [operator: string]>

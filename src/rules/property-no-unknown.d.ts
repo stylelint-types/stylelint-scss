@@ -2,7 +2,7 @@ import type { AtRules, RegExpLike, RuleConfig } from 'stylelint-define-config'
 
 export type PropertyNoUnknownOptions = RuleConfig<
   true,
-  [],
+  [property: string],
   {
     ignoreProperties?: RegExpLike[]
     /**

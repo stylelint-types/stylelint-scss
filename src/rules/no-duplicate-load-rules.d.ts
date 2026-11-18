@@ -1,3 +1,3 @@
 import type { RuleConfig } from 'stylelint-define-config'
 
-export type NoDuplicateLoadRulesOptions = RuleConfig<true>
+export type NoDuplicateLoadRulesOptions = RuleConfig<true, [duplicate: string]>

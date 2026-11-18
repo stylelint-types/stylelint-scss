@@ -1,3 +1,3 @@
 import type { RuleConfig } from 'stylelint-define-config'
 
-export type NoGlobalFunctionNamesOptions = RuleConfig<true>
+export type NoGlobalFunctionNamesOptions = RuleConfig<true, [name: string]>

@@ -1,3 +1,3 @@
 import type { RuleConfig } from 'stylelint-define-config'
 
-export type NoDollarVariablesOptions = RuleConfig<true>
+export type NoDollarVariablesOptions = RuleConfig<true, [variable: string]>

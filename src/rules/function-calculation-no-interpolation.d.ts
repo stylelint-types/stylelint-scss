@@ -1,3 +1,3 @@
 import type { RuleConfig } from 'stylelint-define-config'
 
-export type FunctionCalculationNoInterpolationOptions = RuleConfig<true>
+export type FunctionCalculationNoInterpolationOptions = RuleConfig<true, [func: string]>

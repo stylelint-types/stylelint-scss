@@ -2,7 +2,7 @@ import type { Arrayable, CSSPropertiesMap, RegExpLike, RuleConfig } from 'stylel
 
 export type DeclarationPropertyValueNoUnknownOptions = RuleConfig<
   true,
-  [],
+  [property: string, value: string],
   {
     /**
      * Ignore the specified property and value pairs.

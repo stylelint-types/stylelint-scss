@@ -1,3 +1,3 @@
 import type { RuleConfig } from 'stylelint-define-config'
 
-export type OperatorNoNewlineBeforeOptions = RuleConfig<true>
+export type OperatorNoNewlineBeforeOptions = RuleConfig<true, [operator: string]>
